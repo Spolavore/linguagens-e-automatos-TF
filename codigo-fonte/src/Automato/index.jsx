@@ -65,7 +65,7 @@ export default function App() {
 
         // Desmutar
         {
-            data: { source: "3", target: "4", label: "M"}
+            data: { source: "3", target: "4", label: "DM"}
         },
 
    
