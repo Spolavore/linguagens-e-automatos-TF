@@ -11,26 +11,33 @@
 .userInterface{
     display: flex;
     flex-direction: column;
+ 
     align-items: center;
     justify-content: space-between;
     text-align: center;
+    margin-top: 5%;
 }
 
 .box{
     display: flex;
-    width: 400px;
+    width: 50%;
     flex-direction: column;
     justify-content: space-between;
     gap: 30px;
 }
 
 .box span{
-    font-size: 1.5rem;
+    font-size: 3rem;
 }
 
 .box input{
     padding: 2%;
+    font-size: 1.3rem;
     height: 30px;
+}
+
+.box input::placeholder{
+    font-size: 1.3rem;
 }
 
 .buttons{

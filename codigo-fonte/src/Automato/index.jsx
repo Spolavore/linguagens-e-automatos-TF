@@ -66,7 +66,9 @@ export default function App() {
         {
             data: { source: "2", target: "3", label: "M"}
         },
-
+        {
+            data: {source: "3", target: "3", label: "M"}
+        },
         
 
 
@@ -205,7 +207,7 @@ export default function App() {
             "target-arrow-shape": "triangle",
             "curve-style": "bezier",
             label: "data(label)",
-            "font-size": "15px",
+            "font-size": "12px",
             "z-index": "20px",
             "font-weight": "bold",
             
@@ -229,8 +231,8 @@ export default function App() {
             layout={layout}
             style={{ width: width, height: height }}
             zoomingEnabled={true}
-            maxZoom={3}
-            minZoom={0.8}
+            maxZoom={5}
+            minZoom={0.4}
             autounselectify={false}
             boxSelectionEnabled={false}
             stylesheet={styleSheet}
