@@ -1,0 +1,59 @@
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+
+}
+
+.mainContainer h1{
+    font-size: 2vw;
+    margin-bottom: 4%;
+}
+
+.definicoes{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.simbologiaBox{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    height: 400px;
+}
+
+
+
+
+
+.alfabetoEntrada{
+    color: red;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-right: 3%;
+}
+
+
+
+.linguagemUtilizadaBox{
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.linguagemUtilizadaBox p {
+   width: 300px;
+   font-size: 1.3rem;
+}
+
+
+.simbologiaBox, .linguagemUtilizadaBox, .definicaoFormalBox{
+    width: fit-content;
+    border: 2px solid rgb(118, 117, 117);
+    border-radius: 3px;
+    box-shadow: 4px 2px 20px rgb(145, 143, 143);
+    padding: 2%;
+    margin-bottom: 4%;
+}

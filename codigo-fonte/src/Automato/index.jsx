@@ -6,7 +6,7 @@ export default function App() {
   const [height, setHeight] = useState("50vw");
   const [graphData, setGraphData] = useState({
     nodes: [
-      { data: { id: "1", label: "q0" }, position: {x: -200, y: 50}},
+      { data: { id: "1", label: "q0", type:"init"}, position: {x: -200, y: 50}},
       { data: { id: "2", label: "q1" }, position: {x: 100, y: -100}},
       { data: { id: "3", label: "qM" }, position: {x: -200, y: 300}},
       { data: { id: "4", label: "qA1" }, position: {x: 400, y: -40}},
@@ -58,28 +58,34 @@ export default function App() {
         {
             data: { source: "8", target: "1", label: "D"}
         },
+
         //  Mutar
+        {
+            data: { source: "4", target: "3", label: "M"}
+        },
         {
             data: { source: "2", target: "3", label: "M"}
         },
 
-        // Desmutar
-        {
-            data: { source: "3", target: "4", label: "DM"}
-        },
-
-   
+        
 
 
         //  Aumentar e diminuir o volume transicoes
+        {
+            data: {source: "3", target: "4", label: "AV"}
+        },
         {
             data: { source: "2", target: "4", label: "AV"}
         },
         {
             data: { source: "4", target: "2", label: "DV"}
         },
-
-        
+        {
+            data: {source: "2", target: "2", label:"DV"}
+        },
+        {
+            data: {source: "3", target: "3", label:"DV"}
+        },
         {
             data: { source: "4", target: "5", label: "AV"}
         },
@@ -108,11 +114,10 @@ export default function App() {
             data: { source: "8", target: "7", label: "DV"}
         },
 
-        // do qA1, qA2, qA3, qA4, qA5 para o mutar
-
         {
-            data: { source: "4", target: "3", label: "M"}
+            data: {source: "8", target: "8", label: "AV"}
         },
+        // do qA1, qA2, qA3, qA4, qA5 para o mutar
         {
             data: { source: "5", target: "3", label: "M"}
         },
@@ -126,6 +131,9 @@ export default function App() {
             data: { source: "8", target: "3", label: "M"}
         },
         // trocar canal
+        {
+            data: {source: "2", target: "2", label: "TC"}
+        },
         {
             data: { source: "3", target: "3", label: "TC"}
         },
@@ -178,7 +186,14 @@ export default function App() {
             "z-index": "10",
             "color": "red",
             "background-color": "yellow"
-            
+        }
+    },
+    {
+        selector: "node[type='init']",
+        style:{
+            shape:"circle",
+            backgroundColor: "blue",
+            borderSize: "20px"
         }
     },
     {
@@ -215,7 +230,7 @@ export default function App() {
             style={{ width: width, height: height }}
             zoomingEnabled={true}
             maxZoom={3}
-            minZoom={0.1}
+            minZoom={0.8}
             autounselectify={false}
             boxSelectionEnabled={false}
             stylesheet={styleSheet}
