@@ -68,3 +68,30 @@
     cursor: pointer;
 
 }
+
+.nodes{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    
+    gap: 5%;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+.status{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    margin-top: 5%;
+    
+}
+
+.status h3{
+    font-size: clamp(0.8vw, 1.5rem, 3vw)
+}
+
+.status h3 span{
+    color: #0091FD;
+}

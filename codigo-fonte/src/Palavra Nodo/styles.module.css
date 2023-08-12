@@ -1,0 +1,28 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.nodeAceita, .nodeRejeita{
+    padding: 50px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    font-size: 1.3rem;
+    transition: all 300ms ease-in;
+    margin-bottom: 2%;
+}
+.nodeAceita {
+    border: 5px solid green;
+
+}
+.nodeRejeita{
+    border: 5px solid rgb(251, 0, 0);
+
+}
+

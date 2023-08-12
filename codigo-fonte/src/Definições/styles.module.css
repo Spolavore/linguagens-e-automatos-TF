@@ -12,8 +12,8 @@
 
 .definicoes{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     
 }
 
@@ -52,7 +52,6 @@
     font-size: 1.3rem;
 }
 .linguagemUtilizadaBox p {
-
    font-size: 1.3rem;
 }
 
