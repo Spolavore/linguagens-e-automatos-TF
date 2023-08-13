@@ -52,7 +52,7 @@
     font-size: 1.3rem;
 }
 .linguagemUtilizadaBox p {
-   font-size: 1.3rem;
+   font-size: clamp(0.75rem, 1.5vw, 3vw)
 }
 
 .transicoesBox{
@@ -74,4 +74,9 @@
     box-shadow: 4px 2px 20px rgb(145, 143, 143);
     padding: 2%;
     margin-bottom: 4%;
+}
+
+.transicoesBox p{
+    font-size: clamp(0.75rem, 1.5vw, 3vw)
+
 }

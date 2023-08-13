@@ -10,16 +10,22 @@ export default function ReconhecerLinguagem(){
     const [status, setStatus] = useState([]) // Status de cada uma das letras: se ela é aceita pela linguagem ou nao
     const [estadoAtualStep, setEstadoAtualStep] = useState('q0') // Guarda o estado atual do modo Passo-a-Passo (inicia em q0)
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
-    
+    console.log(status)
+    // variavel conteundo o estilo do status
+    // muda conforme a palavra for aceita ou nao
     var styleOutPutStatus
     if (statusOutPut === 'ACEITA'){
         styleOutPutStatus = {
             color: "green"
         }
-    } else {
+    } else if(statusOutPut === 'REJEITA' || statusOutPut === 'FUNÇÃO INDEFINIDA') {
         styleOutPutStatus = {
             color: "red"
         }
+
+
+        status[status.length-1] = 'rejeita'
+
     }
     // Função responsável por particionar cada vez mais a palavra
     // no modo Passo-a-Passo, para que assim sempre se pegue a próxima
@@ -44,7 +50,6 @@ export default function ReconhecerLinguagem(){
         if (doStep === 0){
             var aux = palavraEntrada?.split(',')
             setMaxStep(aux?.length - 1)
-            console.log(maxStep)
         }
     }, [palavraModificada])
     return(
@@ -68,6 +73,7 @@ export default function ReconhecerLinguagem(){
 
             </div>
             <div className={styles.nodes}>
+                {/* Printa os Nodos (letras da palavra de entrada inserida pelo usuário) */}
                 {sequence.map((e,index) => {
                     return( <PalavraNodo palavra={e}  status={status[index]} key={index}/>)
                 })}
@@ -76,12 +82,16 @@ export default function ReconhecerLinguagem(){
     )
 
 
-
+//Funcao programa que ira rodar recebendo a palavra de entrada
+// e retornando se ela é aceita ou rejeitada na tela pro usuario
+// se step == true entao significa que o modo Passo-a-Passo está
+// ativado
 function Fp(palavraEntrada,step=false){
     // Se a palavra vazia for passada, ou seja, a televisao esta desligada, pois o usuário nao fez nada
     // então aceita direto e retorna
     if (palavraEntrada === undefined || (doStep === 0 && palavraEntrada === '')){
         setStatusOutPut('ACEITA')
+        setSequence([''])
         setStatus(oldStatus => [...oldStatus, 'aceita'])
         return
     }
@@ -90,6 +100,7 @@ function Fp(palavraEntrada,step=false){
     let estadoAtual
     let palavraAtual = alfabeto[0]  // pega a primeira palavra
     let i = 0 // auxiliar contador
+    let words_read = []
     var invalid = false 
 
     
@@ -103,15 +114,23 @@ function Fp(palavraEntrada,step=false){
         setStep(step => step += 1)
    
     } else {
-        estadoAtual = 'q0'    // seta o estado inicial (apenas para o modo rodar, no modo step o estado tem que ser salva
+        // seta o estado inicial (apenas para o modo rodar, no modo step o estado tem que ser salva
         // 'globalmente')
+        estadoAtual = 'q0'   
     }
     
     
     
-
+    // Parte de processamento da palavra de entrada
+    // vai rodar enquanto o auxiliar i for menor que o tamanho do alfabeto
+    // e enquanto a letra lida for valida
     while (i < alfabeto.length && !invalid){
-
+        words_read.push(palavraAtual) // adiciona a palavra atual para a lista de palavras lidas
+        
+        // abaixo esta a implementacao da funcao programa utilizando switch cases
+        // na parte de definicoes do trabalho da aplicacao há uma imagem mostrando
+        // exatamento quais transicoes que esse codigo abaixo permite e quais ele
+        // da funcao indefinida
         if (estadoAtual === 'q0'){
             switch (palavraAtual){
 
@@ -123,7 +142,10 @@ function Fp(palavraEntrada,step=false){
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
-                    status[status.length] = 'indefinido'
+                    setStatus(oldStatus => [...oldStatus, 'aceita'])
+                    invalid = true
+                    if(!step)
+                        setSequence(words_read)
                     return
             }
         }
@@ -147,7 +169,10 @@ function Fp(palavraEntrada,step=false){
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
-                    status[status.length] = 'indefinido'
+                    setStatus(oldStatus => [...oldStatus, 'aceita'])
+                    invalid = true
+                    if(!step)
+                        setSequence(words_read)
                     return                
             }
         }
@@ -170,7 +195,10 @@ function Fp(palavraEntrada,step=false){
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
-                    status[status.length] = 'indefinido'
+                    setStatus(oldStatus => [...oldStatus, 'aceita'])
+                    invalid = true
+                    if(!step)
+                    setSequence(words_read)
                     return
             }
         }
@@ -194,6 +222,9 @@ function Fp(palavraEntrada,step=false){
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
                     status[status.length] = 'indefinido'
+                    invalid = true
+                    if(!step)
+                    setSequence(words_read)
                     return
             }
         }
@@ -216,7 +247,10 @@ function Fp(palavraEntrada,step=false){
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
-                    status[status.length] = 'indefinido'
+                    setStatus(oldStatus => [...oldStatus, 'aceita'])
+                    invalid = true
+                    if(!step)
+                    setSequence(words_read)
                     return
             }
         }
@@ -240,7 +274,11 @@ function Fp(palavraEntrada,step=false){
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
-                    status[status.length] = 'indefinido'
+                    setStatus(oldStatus => [...oldStatus, 'aceita'])
+
+                    invalid = true
+                    if(!step)
+                    setSequence(words_read)
                     return
             }
         }
@@ -268,6 +306,9 @@ function Fp(palavraEntrada,step=false){
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
                     status[status.length] = 'indefinido'
+                    invalid = true
+                    if(!step)
+                    setSequence(words_read)
                     return
             }
         }
@@ -292,10 +333,16 @@ function Fp(palavraEntrada,step=false){
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
                     status[status.length] = 'indefinido'
+                    invalid = true
+                    if(!step)
+                        setSequence(words_read)
                     return
             }
         }
+        
 
+
+       
 
         // Se a opção Passo-a-Passo estiver ativa, então, já que não deu indefinida a palavra lida
         // supoe que ela é aceita, (mesmo que ela nao seja aceita, pois no final da função é feita)
@@ -308,11 +355,9 @@ function Fp(palavraEntrada,step=false){
             // Se o modo Rodar for escolhido incrementa o I e seta a palavra atual na lista de se-
             // quencias , e coloca o status para 'aceita'
             i = i + 1
-
             setStatus(oldStatus => [...oldStatus, 'aceita'])
             palavraAtual = alfabeto[i] // atualiza para a proxima palavra passada
     
-            
         }
 
     }
@@ -321,10 +366,12 @@ function Fp(palavraEntrada,step=false){
     // Se o modo Rodar estiver ativo
     if (!step){
         // verifica se o I já foi saturado e se o estado de parada é diferente do q0
+        setSequence(words_read)// printa palavras lidas
         if(i >= alfabeto.length && estadoAtual !== 'q0'){
             // se isso ocorrer rejeita, pois ele nao parou em um estado de aceitacao
+            status[status.length] = 'rejeita'
             setStatusOutPut('REJEITA')
-            setStatus(oldStatus => oldStatus[oldStatus.length - 1] = 'rejeita')
+
         
         } else if(i >= alfabeto.length && estadoAtual === 'q0'){
             // caso contrario aceita
@@ -333,13 +380,15 @@ function Fp(palavraEntrada,step=false){
 
         }
     } else{
-
+        // se o passo atual eh maior ou igual ao maximo de passos possiveis
+        // e o estado atual for diferente de q0 entao rejeita
         if(doStep >= maxStep && estadoAtual !== 'q0' ){
             
             status[status.length] = 'rejeita'
             setStatusOutPut('REJEITA')
 
         } 
+        // caso contrario rejeita
         if(doStep >= maxStep && estadoAtual === 'q0' ){
             setStatus(oldStatus => [...oldStatus, 'aceita'])
             setStatusOutPut('ACEITA')
