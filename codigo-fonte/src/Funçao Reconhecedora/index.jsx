@@ -10,7 +10,7 @@ export default function ReconhecerLinguagem(){
     const [status, setStatus] = useState([]) // Status de cada uma das letras: se ela é aceita pela linguagem ou nao
     const [estadoAtualStep, setEstadoAtualStep] = useState('q0') // Guarda o estado atual do modo Passo-a-Passo (inicia em q0)
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
-    console.log(status)
+
     // variavel conteundo o estilo do status
     // muda conforme a palavra for aceita ou nao
     var styleOutPutStatus
@@ -18,14 +18,19 @@ export default function ReconhecerLinguagem(){
         styleOutPutStatus = {
             color: "green"
         }
-    } else if(statusOutPut === 'REJEITA' || statusOutPut === 'FUNÇÃO INDEFINIDA') {
+    } else if(statusOutPut === 'REJEITA') {
         styleOutPutStatus = {
             color: "red"
-        }
+        }      
 
+        status[status.length] = 'rejeita'
+    
+    } else if(statusOutPut === 'FUNÇÃO INDEFINIDA'){
+        styleOutPutStatus = {
+            color: "red"
+        }      
 
         status[status.length-1] = 'rejeita'
-
     }
     // Função responsável por particionar cada vez mais a palavra
     // no modo Passo-a-Passo, para que assim sempre se pegue a próxima
@@ -275,7 +280,6 @@ function Fp(palavraEntrada,step=false){
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
                     setStatus(oldStatus => [...oldStatus, 'aceita'])
-
                     invalid = true
                     if(!step)
                     setSequence(words_read)
