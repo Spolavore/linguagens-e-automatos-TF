@@ -11,6 +11,8 @@ export default function ReconhecerLinguagem(){
     const [estadoAtualStep, setEstadoAtualStep] = useState('q0') // Guarda o estado atual do modo Passo-a-Passo (inicia em q0)
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
 
+    const [csvFile, setCsvFile] = useState()
+
     // variavel conteundo o estilo do status
     // muda conforme a palavra for aceita ou nao
     var styleOutPutStatus
@@ -68,6 +70,7 @@ export default function ReconhecerLinguagem(){
                     <div className={styles.buttons}>
                         <button onClick={() => Fp(palavraEntrada)}>Rodar</button>
                         <button onClick={() => maxStep + 1 > doStep && statusOutPut === ''? Fp(palavraModificada,true) : null}>Passo</button>
+                        <input type={"file"} accept={".csv"} onChange={(e)=>setCsvFile(e.target.value)}/>
                     </div>
                 </div>
             <div className={styles.status}>
