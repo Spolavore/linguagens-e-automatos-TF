@@ -26,7 +26,7 @@ export default function App() {
            data: { source: "1", target: "2", label: "L"}, 
         },
 
-        // Desligar a Televisao
+        // Desligar a Televisao : inicio
         {
             data: { source: "1", target: "1", label: "D"}, 
          },
@@ -58,6 +58,8 @@ export default function App() {
         {
             data: { source: "8", target: "1", label: "D"}
         },
+        //  fim 
+
 
         //  Mutar
         {
@@ -72,13 +74,138 @@ export default function App() {
         
 
 
-        //  Aumentar e diminuir o volume transicoes
+        //  Aumentar e diminuir o volume transicoes: inicio
         {
             data: {source: "3", target: "4", label: "AV"}
+        }, // do mutar para o volume 1
+        {
+            data: {source: "3", target: "5", label: "AV2"}
+           // do mutar para o volume 2
         },
         {
-            data: { source: "2", target: "4", label: "AV"}
+            data: {source: "3", target: "6", label: "AV3"}
+           // do mutar para o volume 3
         },
+
+        {
+            data: {source: "3", target: "7", label: "AV4"}
+           // do mutar para o volume 4
+        },
+        {
+            data: {source: "3", target: "8", label: "AV5"}
+           // do mutar para o volume 5
+        },
+
+        {
+            data: { source: "2", target: "4", label: "AV"}
+        }, // do q1 para o volume 1 ( 0 para 1 )
+        
+        
+        {
+            data: { source: "2", target: "5", label: "AV2"}
+        }, // do q1 para o volume 2 ( 0 para 2 )
+                
+        {
+            data: { source: "2", target: "6", label: "AV3"}
+        }, // do q1 para o volume 3 ( 0 para 3 )
+
+        {
+            data: { source: "2", target: "7", label: "AV4"}
+        }, // do q1 para o volume 4 ( 0 para 4 )
+        {
+            data: { source: "2", target: "8", label: "AV5"}
+        }, // do q1 para o volume 5 ( 0 para 5 )
+
+        {
+            data: { source: "4", target: "5", label: "AV"}
+        },  // do qA1 para o qA2 (aumenta o volume em 1 unidade)
+
+        {
+            data: { source: "4", target: "6", label: "AV2"}
+        },  // do qA1 para o qA3 (volume = 3)
+        {
+            data: { source: "4", target: "7", label: "AV3"}
+        },  // do qA1 para o qA4 (volume = 4)
+        {
+            data: { source: "4", target: "8", label: "AV4"}
+        },  // do qA1 para o qA4 (volume = 5)
+        {
+            data: { source: "4", target: "8", label: "AV5"}
+        },  // do qA1 para o qA4 (volume = 5)
+
+        {
+            data: { source: "5", target: "6", label: "AV"}
+        }, // do qA2 para o qA3(volume = 3)
+        {
+            data: { source: "5", target: "7", label: "AV2"}
+        }, // do qA2 para o qA4(volume = 4)
+        {
+            data: { source: "5", target: "8", label: "AV3"}
+        }, // do qA2 para o qA5(volume = 5)
+        {
+            data: { source: "5", target: "8", label: "AV4"}
+        }, // do qA2 para o qA5(volume = 5)
+        {
+            data: { source: "5", target: "8", label: "AV5"}
+        }, // do qA2 para o qA5(volume = 5)
+
+
+        {
+            data: { source: "6", target: "7", label: "AV"}
+        }, // do qA3 para o qA4(volume = 4)
+        
+        {
+            data: { source: "6", target: "8", label: "AV2"}
+        }, // do qA3 para o qA5(volume = 5)
+        {
+            data: { source: "6", target: "8", label: "AV3"}
+        }, // do qA3 para o qA5(volume = 5)
+        {
+            data: { source: "6", target: "8", label: "AV4"}
+        }, // do qA3 para o qA5(volume = 5)
+        {
+            data: { source: "6", target: "8", label: "AV5"}
+        }, // do qA3 para o qA5(volume = 5)
+
+
+
+        {
+            data: { source: "7", target: "8", label: "AV"}
+        }, // do qA4 para o qA5(volume = 5)
+        {
+            data: { source: "7", target: "8", label: "AV2"}
+        }, // do qA4 para o qA5(volume = 5)
+        {
+            data: { source: "7", target: "8", label: "AV3"}
+        }, // do qA4 para o qA5(volume = 5)
+        {
+            data: { source: "7", target: "8", label: "AV4"}
+        }, // do qA4 para o qA5(volume = 5)
+        {
+            data: { source: "7", target: "8", label: "AV5"}
+        }, // do qA4 para o qA5(volume = 5)
+
+        {
+            data: {source: "8", target: "8", label: "AV"}
+        }, // do qA5 para o qA5(volume = 5 pq satura)
+        {
+            data: {source: "8", target: "8", label: "AV2"}
+        }, // do qA5 para o qA5(volume = 5 pq satura)
+
+        {
+            data: {source: "8", target: "8", label: "AV3"}
+        }, // do qA5 para o qA5(volume = 5 pq satura)
+
+        {
+            data: {source: "8", target: "8", label: "AV4"}
+        }, // do qA5 para o qA5(volume = 5 pq satura)
+
+        {
+            data: {source: "8", target: "8", label: "AV5"}
+        }, // do qA5 para o qA5(volume = 5 pq satura)
+
+
+        // diminuicao de volume: inicio
         {
             data: { source: "4", target: "2", label: "DV"}
         },
@@ -89,36 +216,22 @@ export default function App() {
             data: {source: "3", target: "3", label:"DV"}
         },
         {
-            data: { source: "4", target: "5", label: "AV"}
-        },
-        {
             data: { source: "5", target: "4", label: "DV"}
-        },
-
-        {
-            data: { source: "5", target: "6", label: "AV"}
         },
         {
             data: { source: "6", target: "5", label: "DV"}
         },
-
-        {
-            data: { source: "6", target: "7", label: "AV"}
-        },
         {
             data: { source: "7", target: "6", label: "DV"}
-        },
-        {
-            data: { source: "7", target: "8", label: "AV"}
         },
 
         {
             data: { source: "8", target: "7", label: "DV"}
         },
+        // fim
 
-        {
-            data: {source: "8", target: "8", label: "AV"}
-        },
+        //  fim 
+
         // do qA1, qA2, qA3, qA4, qA5 para o mutar
         {
             data: { source: "5", target: "3", label: "M"}
@@ -132,7 +245,9 @@ export default function App() {
         {
             data: { source: "8", target: "3", label: "M"}
         },
-        // trocar canal
+
+
+        // trocar canal: inicio
         {
             data: {source: "2", target: "2", label: "TC"}
         },
@@ -155,7 +270,8 @@ export default function App() {
         {
             data: { source: "8", target: "8", label: "TC"}
         },
-    ]
+    ] 
+    // fim
   });
 
  

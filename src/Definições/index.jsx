@@ -12,8 +12,12 @@ const Definicoes = () =>{
             <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>D:</span> Desligar Televisão</span>
             <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>M:</span> Mutar Televisão</span>
             <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>TC:</span> Trocar de Canal</span>
-            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>AV:</span> Aumentar Volume</span>
-            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>DV:</span> Diminuir Volume</span>
+            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>AV:</span> Aumenta o Volume em 1 unidade</span>
+            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>AV2:</span> Aumenta o Volume em 2 unidades</span>
+            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>AV3:</span> Aumenta o Volume em 3 unidades</span>
+            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>AV4:</span> Aumenta o Volume em 4 unidades</span>
+            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>AV5:</span> Aumenta o Volume em 5 unidades</span>
+            <span className={styles.textDefault}><span className={styles.alfabetoEntrada}>DV:</span> Diminui o Volume em 1 unidade</span>
 
 
         </div>
