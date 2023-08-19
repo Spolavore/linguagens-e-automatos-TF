@@ -11,7 +11,7 @@ export default function App() {
       { data: { id: "3", label: "qM" }, position: {x: -200, y: 300}},
       { data: { id: "4", label: "qA1" }, position: {x: 800, y: -100}},
       { data: { id: "5", label: "qA2" }, position: {x: 400, y: -150}},
-      { data: { id: "6", label: "qA3" }, position: {x: 800, y: 250}},
+      { data: { id: "6", label: "qA3" }, position: {x: 900, y: 250}},
       { data: { id: "7", label: "qA4" }, position: {x: 800, y: 550}},
       { data: { id: "8", label: "qA5" }, position: {x: -100, y: 550}},
 
