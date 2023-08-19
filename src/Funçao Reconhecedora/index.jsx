@@ -12,7 +12,7 @@ export default function ReconhecerLinguagem(){
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
 
     const [csvFile, setCsvFile] = useState()
-    console.log(status)
+
     // variavel conteundo o estilo do status
     // muda conforme a palavra for aceita ou nao
     var styleOutPutStatus
@@ -157,11 +157,23 @@ function Fp(palavraEntrada,step=false){
                     return
             }
         }
-
+        // Estado (ligado), volume = 0
         else if(estadoAtual === 'q1'){
             switch(palavraAtual){
                 case 'AV':
                     estadoAtual= 'qA1'
+                    break
+                case 'AV2':
+                    estadoAtual='qA2'
+                    break
+                case 'AV3':
+                    estadoAtual='qA3'
+                    break
+                case 'AV4':
+                    estadoAtual='qA4'
+                    break
+                case 'AV5':
+                    estadoAtual='qA5'
                     break
                 case 'DV':
                     estadoAtual = 'q1'
@@ -184,6 +196,7 @@ function Fp(palavraEntrada,step=false){
                     return                
             }
         }
+        // Estado de Volume = 1
         else if(estadoAtual === 'qA1'){
             switch(palavraAtual){
                 case 'TC':
@@ -194,7 +207,19 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'AV':
                     estadoAtual = 'qA2' 
-                    break  
+                break
+                case 'AV2':
+                    estadoAtual='qA3'
+                    break
+                case 'AV3':
+                    estadoAtual='qA4'
+                    break
+                case 'AV4':
+                    estadoAtual='qA5'
+                    break
+                case 'AV5':
+                    estadoAtual='qA5'
+                    break
                 case 'DV':
                     estadoAtual = 'q1'
                     break
@@ -210,6 +235,7 @@ function Fp(palavraEntrada,step=false){
                     return
             }
         }
+        // Estado de Volume = 2
        else if(estadoAtual === 'qA2'){
             switch(palavraAtual){
                 case 'TC':
@@ -220,7 +246,19 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'AV':
                     estadoAtual = 'qA3'   
-                    break   
+                    break
+                case 'AV2':
+                    estadoAtual='qA4'
+                    break
+                case 'AV3':
+                    estadoAtual='qA5'
+                    break
+                case 'AV4':
+                    estadoAtual='qA5'
+                    break
+                case 'AV5':
+                    estadoAtual='qA5'
+                    break
                 case 'DV':
                     estadoAtual = 'qA1'  
                     break   
@@ -236,6 +274,7 @@ function Fp(palavraEntrada,step=false){
                     return
             }
         }
+        // Estado de volume = 3
        else if(estadoAtual === 'qA3'){
             switch(palavraAtual){
                 case 'TC':
@@ -249,6 +288,18 @@ function Fp(palavraEntrada,step=false){
                     break      
                 case 'AV':
                     estadoAtual = 'qA4'
+                case 'AV2':
+                    estadoAtual='qA5'
+                    break
+                case 'AV3':
+                    estadoAtual='qA5'
+                    break
+                case 'AV4':
+                    estadoAtual='qA5'
+                    break
+                case 'AV5':
+                    estadoAtual='qA5'
+                    break
                     break
                 case 'M':
                     estadoAtual = 'qM'
@@ -262,6 +313,7 @@ function Fp(palavraEntrada,step=false){
                     return
             }
         }
+        // Estado de volume = 4
         else if(estadoAtual === 'qA4'){
 
             switch(palavraAtual){
@@ -270,6 +322,18 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'AV':
                     estadoAtual = 'qA5'
+                    break
+                case 'AV2':
+                    estadoAtual='qA5'
+                    break
+                case 'AV3':
+                    estadoAtual='qA5'
+                    break
+                case 'AV4':
+                    estadoAtual='qA5'
+                    break
+                case 'AV5':
+                    estadoAtual='qA5'
                     break
                 case 'DV':
                     estadoAtual = 'qA3'
@@ -300,6 +364,18 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'AV':
                     estadoAtual = 'qA5'
+                    break
+                case 'AV2':
+                    estadoAtual='qA5'
+                    break
+                case 'AV3':
+                    estadoAtual='qA5'
+                    break
+                case 'AV4':
+                    estadoAtual='qA5'
+                    break
+                case 'AV5':
+                    estadoAtual='qA5'
                     break
                 case 'DV':
                     estadoAtual = 'qA4' 
