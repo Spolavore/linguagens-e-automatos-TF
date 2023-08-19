@@ -9,11 +9,11 @@ export default function App() {
       { data: { id: "1", label: "q0", type:"init"}, position: {x: -200, y: 50}},
       { data: { id: "2", label: "q1" }, position: {x: 100, y: -100}},
       { data: { id: "3", label: "qM" }, position: {x: -200, y: 300}},
-      { data: { id: "4", label: "qA1" }, position: {x: 400, y: -40}},
-      { data: { id: "5", label: "qA2" }, position: {x: 400, y: 150}},
-      { data: { id: "6", label: "qA3" }, position: {x: 400, y: 250}},
-      { data: { id: "7", label: "qA4" }, position: {x: 400, y: 350}},
-      { data: { id: "8", label: "qA5" }, position: {x: 400, y: 450}},
+      { data: { id: "4", label: "qA1" }, position: {x: 800, y: -100}},
+      { data: { id: "5", label: "qA2" }, position: {x: 400, y: -150}},
+      { data: { id: "6", label: "qA3" }, position: {x: 800, y: 250}},
+      { data: { id: "7", label: "qA4" }, position: {x: 800, y: 550}},
+      { data: { id: "8", label: "qA5" }, position: {x: -100, y: 550}},
 
 
     
