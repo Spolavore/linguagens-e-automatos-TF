@@ -14,8 +14,8 @@ export default function ReconhecerLinguagem(){
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
     
     const [csvFile, setCsvFile] = useState()
-    const [volume, setVolume] = useState(0)
-
+    const [volume, setVolume] = useState(0)  // controla o volume da televisão
+    const [channel, changeChannel] = useState(0) // canal 0 significa que a televisao esta desligada
     // satura o volume em 5 e 0
     useEffect(() => {
         if (volume > 5)
@@ -85,7 +85,7 @@ export default function ReconhecerLinguagem(){
                     </div>
                 </div>
                 <div className={styles.television}>
-                    <Televisao/>
+                    <Televisao change_channel={channel}/>
                     <Volume volume_set={volume}/>
                 </div>
             <div className={styles.status}>
@@ -158,8 +158,10 @@ function Fp(palavraEntrada,step=false){
         // da funcao indefinida
         if (estadoAtual === 'q0'){
             setVolume(0)
+            changeChannel(0)
             switch (palavraAtual){
                 case 'L': 
+                    changeChannel(e => e+=1)
                     estadoAtual= 'q1'
                     break
                 case 'D':
@@ -204,9 +206,11 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'TC':
                     estadoAtual='q1'
+                    changeChannel( e => e+=1)
                     break
                 case 'D':
                     estadoAtual= 'q0'
+                    changeChannel(0)
                     break
                 case 'M':
                     estadoAtual='qM'
@@ -227,9 +231,11 @@ function Fp(palavraEntrada,step=false){
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA1'
+                    changeChannel( e => e+=1)
                     break
                 case 'M':
                     estadoAtual = 'qM'
+                    setVolume(0)
                     break
                 case 'AV':
                     estadoAtual = 'qA2' 
@@ -257,6 +263,7 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'D':
                     estadoAtual='q0'
+                    changeChannel(0)
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
@@ -272,7 +279,8 @@ function Fp(palavraEntrada,step=false){
             setVolume(2)
             switch(palavraAtual){
                 case 'TC':
-                    estadoAtual = 'qA2'  
+                    estadoAtual = 'qA2'
+                    changeChannel( e => e+=1)
                     break  
                 case 'M':
                     estadoAtual = 'qM'
@@ -303,7 +311,8 @@ function Fp(palavraEntrada,step=false){
                     setVolume(e => e -= 1)
                     break   
                 case 'D':
-                    estadoAtual = 'q0' 
+                    estadoAtual = 'q0'
+                    changeChannel(0) 
                     break            
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
@@ -319,10 +328,12 @@ function Fp(palavraEntrada,step=false){
             setVolume(3)
             switch(palavraAtual){
                 case 'TC':
-                    estadoAtual = 'qA3'    
+                    estadoAtual = 'qA3'
+                    changeChannel( e => e+=1)
                     break
                 case 'D':
-                    estadoAtual = 'q0'    
+                    estadoAtual = 'q0'
+                    changeChannel(0)   
                     break
                 case 'DV':
                     estadoAtual = 'qA2'
@@ -366,6 +377,7 @@ function Fp(palavraEntrada,step=false){
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA4'
+                    changeChannel( e => e+=1)
                     break
                 case 'AV':
                     estadoAtual = 'qA5'
@@ -393,6 +405,7 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'D':
                     estadoAtual = 'q0'
+                    changeChannel(0)
                     break
                 case 'M':
                     estadoAtual = 'qM'
@@ -413,9 +426,11 @@ function Fp(palavraEntrada,step=false){
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA5'
+                    changeChannel( e => e+=1)
                     break
                 case 'D':
                     estadoAtual = 'q0'
+                    changeChannel(0)
                     break
                 case 'AV':
                     estadoAtual = 'qA5'
@@ -443,6 +458,7 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'D':
                     estadoAtual = 'q0'
+                    changeChannel(0)
                     break
                 case 'M':
                     estadoAtual = 'qM'
@@ -459,7 +475,7 @@ function Fp(palavraEntrada,step=false){
         }
         // Estado volume = 0
         else if(estadoAtual === 'qM'){
-            setVolume(0)
+            setVolume(e => e = 0)
             switch(palavraAtual){
                 case 'DV':
                     estadoAtual = 'qM'
@@ -470,9 +486,11 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'TC':
                     estadoAtual = 'qM'
+                    changeChannel( e => e+=1)
                     break
                 case 'D':
                     estadoAtual = 'q0'
+                    changeChannel(0)
                     break
                 case 'AV':
                     estadoAtual = 'qA1'

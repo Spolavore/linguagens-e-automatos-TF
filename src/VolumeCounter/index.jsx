@@ -4,12 +4,10 @@ export default function Volume({volume_set}){
 // Componente responsável pelo controle do volume
 
     let volume_counter = []
-    console.log(volume_counter)
     let aux_volume = volume_set;
     const [volumeStatus, setVolumeStatus] = useState('')
 
     while (aux_volume > 0){
-        console.log('entrei')
         volume_counter.push('*')
         aux_volume -= 1
     }
