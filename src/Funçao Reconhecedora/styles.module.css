@@ -8,6 +8,12 @@
     font-size: 2vw;
 }
 
+.television{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .userInterface{
     display: flex;
     flex-direction: column;

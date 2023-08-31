@@ -1,6 +1,8 @@
 import styles from './styles.module.css'
 import { useState, useEffect } from 'react'
 import PalavraNodo from '../Palavra Nodo'
+import Volume from '../VolumeCounter'
+import Televisao from '../Televisão'
 export default function ReconhecerLinguagem(){
     const [palavraEntrada, setPalavraEntrada] = useState()  // guarda a palavra escrita pelo usuario modo csv
     const [palavraModificada, setPalavraModificada] = useState()// guarda a palavra escrita pelo usuario modo csv
@@ -10,9 +12,18 @@ export default function ReconhecerLinguagem(){
     const [status, setStatus] = useState([]) // Status de cada uma das letras: se ela é aceita pela linguagem ou nao
     const [estadoAtualStep, setEstadoAtualStep] = useState('q0') // Guarda o estado atual do modo Passo-a-Passo (inicia em q0)
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
-
+    
     const [csvFile, setCsvFile] = useState()
+    const [volume, setVolume] = useState(0)
 
+    // satura o volume em 5 e 0
+    useEffect(() => {
+        if (volume > 5)
+            setVolume(5)
+        else if (volume < 0)
+            setVolume(0)
+    }, [volume])
+    
     // variavel conteundo o estilo do status
     // muda conforme a palavra for aceita ou nao
     var styleOutPutStatus
@@ -73,13 +84,19 @@ export default function ReconhecerLinguagem(){
                         <input type={"file"} accept={".csv"} onChange={(e)=>setCsvFile(e.target.value)}/>
                     </div>
                 </div>
+                <div className={styles.television}>
+                    <Televisao/>
+                    <Volume volume_set={volume}/>
+                </div>
             <div className={styles.status}>
                 <h3>Estado Atual: <span>{estadoAtualStep}</span></h3>
                 <h3>Passos: <span>{doStep}</span></h3>
                 <h3>Status: <span style={styleOutPutStatus}>{statusOutPut}</span></h3>
+
             </div>
 
             </div>
+       
             <div className={styles.nodes}>
                 {/* Printa os Nodos (letras da palavra de entrada inserida pelo usuário) */}
                 {sequence.map((e,index) => {
@@ -140,8 +157,8 @@ function Fp(palavraEntrada,step=false){
         // exatamento quais transicoes que esse codigo abaixo permite e quais ele
         // da funcao indefinida
         if (estadoAtual === 'q0'){
+            setVolume(0)
             switch (palavraAtual){
-
                 case 'L': 
                     estadoAtual= 'q1'
                     break
@@ -159,24 +176,31 @@ function Fp(palavraEntrada,step=false){
         }
         // Estado (ligado), volume = 0
         else if(estadoAtual === 'q1'){
+            setVolume(0)
             switch(palavraAtual){
                 case 'AV':
                     estadoAtual= 'qA1'
+                    setVolume(e => e += 1)
                     break
                 case 'AV2':
                     estadoAtual='qA2'
+                    setVolume(e => e += 2)
                     break
                 case 'AV3':
                     estadoAtual='qA3'
+                    setVolume(e => e += 3)
                     break
                 case 'AV4':
                     estadoAtual='qA4'
+                    setVolume(e => e += 4)
                     break
                 case 'AV5':
                     estadoAtual='qA5'
+                    setVolume(e => e += 5)
                     break
                 case 'DV':
                     estadoAtual = 'q1'
+                    setVolume((e) => e -= 1)
                     break
                 case 'TC':
                     estadoAtual='q1'
@@ -186,6 +210,7 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'M':
                     estadoAtual='qM'
+                    setVolume(0)
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
@@ -198,30 +223,37 @@ function Fp(palavraEntrada,step=false){
         }
         // Estado de Volume = 1
         else if(estadoAtual === 'qA1'){
+            setVolume(1)
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA1'
                     break
                 case 'M':
-                    estadoAtual = 'qM' 
+                    estadoAtual = 'qM'
                     break
                 case 'AV':
                     estadoAtual = 'qA2' 
+                    setVolume(e => e += 1)
                 break
                 case 'AV2':
                     estadoAtual='qA3'
+                    setVolume(e => e += 2)
                     break
                 case 'AV3':
                     estadoAtual='qA4'
+                    setVolume(e => e += 3)
                     break
                 case 'AV4':
                     estadoAtual='qA5'
+                    setVolume(e => e += 4)
                     break
                 case 'AV5':
                     estadoAtual='qA5'
+                    setVolume(e => e += 5)
                     break
                 case 'DV':
                     estadoAtual = 'q1'
+                    setVolume(e => e -= 1)
                     break
                 case 'D':
                     estadoAtual='q0'
@@ -237,30 +269,38 @@ function Fp(palavraEntrada,step=false){
         }
         // Estado de Volume = 2
        else if(estadoAtual === 'qA2'){
+            setVolume(2)
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA2'  
                     break  
                 case 'M':
-                    estadoAtual = 'qM'  
+                    estadoAtual = 'qM'
+                    setVolume(0)
                     break
                 case 'AV':
-                    estadoAtual = 'qA3'   
+                    estadoAtual = 'qA3'
+                    setVolume(e => e += 1)
                     break
                 case 'AV2':
                     estadoAtual='qA4'
+                    setVolume(e => e += 2)
                     break
                 case 'AV3':
                     estadoAtual='qA5'
+                    setVolume(e => e += 3)
                     break
                 case 'AV4':
                     estadoAtual='qA5'
+                    setVolume(e => e += 4)
                     break
                 case 'AV5':
                     estadoAtual='qA5'
+                    setVolume(e => e += 5)
                     break
                 case 'DV':
                     estadoAtual = 'qA1'  
+                    setVolume(e => e -= 1)
                     break   
                 case 'D':
                     estadoAtual = 'q0' 
@@ -276,6 +316,7 @@ function Fp(palavraEntrada,step=false){
         }
         // Estado de volume = 3
        else if(estadoAtual === 'qA3'){
+            setVolume(3)
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA3'    
@@ -285,24 +326,30 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'DV':
                     estadoAtual = 'qA2'
+                    setVolume((e) => e -= 1)
                     break      
                 case 'AV':
                     estadoAtual = 'qA4'
+                    setVolume(e => e += 1)
                 case 'AV2':
                     estadoAtual='qA5'
+                    setVolume(e => e += 2)
                     break
                 case 'AV3':
                     estadoAtual='qA5'
+                    setVolume(e => e += 3)
                     break
                 case 'AV4':
                     estadoAtual='qA5'
+                    setVolume(e => e += 4)
                     break
                 case 'AV5':
                     estadoAtual='qA5'
-                    break
+                    setVolume(e => e += 5)
                     break
                 case 'M':
                     estadoAtual = 'qM'
+                    setVolume(0)
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
@@ -315,34 +362,41 @@ function Fp(palavraEntrada,step=false){
         }
         // Estado de volume = 4
         else if(estadoAtual === 'qA4'){
-
+            setVolume(4)
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA4'
                     break
                 case 'AV':
                     estadoAtual = 'qA5'
+                    setVolume(e => e += 1)
                     break
                 case 'AV2':
                     estadoAtual='qA5'
+                    setVolume(e => e += 2)
                     break
                 case 'AV3':
                     estadoAtual='qA5'
+                    setVolume(e => e += 3)
                     break
                 case 'AV4':
                     estadoAtual='qA5'
+                    setVolume(e => e += 4)
                     break
                 case 'AV5':
                     estadoAtual='qA5'
+                    setVolume(e => e += 5)
                     break
                 case 'DV':
                     estadoAtual = 'qA3'
+                    setVolume((e) => e -= 1)
                     break
                 case 'D':
                     estadoAtual = 'q0'
                     break
                 case 'M':
                     estadoAtual = 'qM'
+                    setVolume(0)
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
@@ -353,8 +407,9 @@ function Fp(palavraEntrada,step=false){
                     return
             }
         }
+        // Estado Volume = 5
         else if(estadoAtual === 'qA5'){
-
+            setVolume(5)
             switch(palavraAtual){
                 case 'TC':
                     estadoAtual = 'qA5'
@@ -364,27 +419,34 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'AV':
                     estadoAtual = 'qA5'
+                    setVolume(e => e += 1)
                     break
                 case 'AV2':
                     estadoAtual='qA5'
+                    setVolume(e => e += 2)
                     break
                 case 'AV3':
                     estadoAtual='qA5'
+                    setVolume(e => e += 3)
                     break
                 case 'AV4':
                     estadoAtual='qA5'
+                    setVolume(e => e += 4)
                     break
                 case 'AV5':
                     estadoAtual='qA5'
+                    setVolume(e => e += 5)
                     break
                 case 'DV':
                     estadoAtual = 'qA4' 
+                    setVolume(e => e -= 1)
                     break
                 case 'D':
                     estadoAtual = 'q0'
                     break
                 case 'M':
                     estadoAtual = 'qM'
+                    setVolume(0)
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')
@@ -395,14 +457,16 @@ function Fp(palavraEntrada,step=false){
                     return
             }
         }
+        // Estado volume = 0
         else if(estadoAtual === 'qM'){
-
+            setVolume(0)
             switch(palavraAtual){
                 case 'DV':
-                    estadoAtual = 'qM' 
+                    estadoAtual = 'qM'
                     break
                 case 'M':
                     estadoAtual = 'qM'
+                    setVolume(0)
                     break
                 case 'TC':
                     estadoAtual = 'qM'
@@ -412,6 +476,23 @@ function Fp(palavraEntrada,step=false){
                     break
                 case 'AV':
                     estadoAtual = 'qA1'
+                    setVolume(e => e += 1)
+                    break
+                case 'AV2':
+                    estadoAtual = 'qA2'
+                    setVolume(e => e += 2)
+                    break
+                case 'AV3':
+                    estadoAtual = 'qA3'
+                    setVolume(e => e += 3)
+                    break
+                case 'AV4':
+                    estadoAtual = 'qA4'
+                    setVolume(e => e += 4)
+                    break
+                case 'AV5':
+                    estadoAtual= 'qA5'
+                    setVolume(e => e += 5)
                     break
                 default:
                     setStatusOutPut('FUNÇÃO INDEFINIDA')

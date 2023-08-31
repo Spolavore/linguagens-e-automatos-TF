@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    align-items:  center;
+    gap: 10px;
+}
+
+.volume{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    width: 200px;
+    padding: 0% 0%;
+    height: 47px;
+    justify-content: flex-start;
+
+}
+
+.volume_bar{
+    width: 40px;
+    height: 47px;
+    box-sizing: border-box;
+    background-color: lightgreen;
+    border: 1px  outset black;
+
+
+}
+
+.muted_icon{
+    width: 25px;
+    height: 25px;
+}
+
+.maxVolume{
+    font-weight: bold;
+    color: red;
+    text-transform: uppercase;
+}

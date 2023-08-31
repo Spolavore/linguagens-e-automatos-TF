@@ -32,8 +32,6 @@ const Definicoes = () =>{
             <span className={styles.textDefault}><span className={styles.estados}>qA4:</span> Estado Não Final</span>
             <span className={styles.textDefault}><span className={styles.estados}>qA5:</span> Estado Não Final</span>
             <span className={styles.textDefault}><span className={styles.estados}>qM:</span> Estado Não Final</span>
-
-
         </div>
 
         <div className={styles.linguagemUtilizadaBox}>
@@ -45,10 +43,6 @@ const Definicoes = () =>{
             <p>O cenário selecionado foi o manuseamento de uma televisão. Temos diversas possibilidades, como ligar e desligar a TV, o aumento e diminuição de volume (de 0 até 5), mutar o volume (retornando o volume até 0), e a troca de canais.
 I Uma Gramática Linear é uma quádrupla (V, T, P, S), onde: I V é o conjunto finito de variáveis I T é o conjunto finito de símbolos terminais (alfabeto) I P é o conjunto finito de produções I S ∈ V é o símbolo inicial 
 </p>
-        </div>
-        <div className={styles.transicoesBox}>
-            <h2>Transições:</h2>
-            
         </div>
         </div>
 
