@@ -17,7 +17,6 @@
 .userInterface{
     display: flex;
     flex-direction: column;
- 
     align-items: center;
     justify-content: space-between;
     text-align: center;
@@ -48,7 +47,10 @@
 
 .buttons{
     display: flex;
-    align-self: center;
+    align-items: center;
+    position: sticky;
+    top: 2%;
+    margin-top: 2%;
     gap: 20px;
   
 }
@@ -74,6 +76,7 @@
     cursor: pointer;
 
 }
+
 
 .nodes{
     display: flex;

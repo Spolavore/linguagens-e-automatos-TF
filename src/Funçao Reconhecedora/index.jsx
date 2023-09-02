@@ -78,11 +78,11 @@ export default function ReconhecerLinguagem(){
                 <div className={styles.box}>
                     <span>Escreva a palavra de Entrada</span>                                 {/*Parte responsável por resetar informações*/ }
                     <input placeholder='Ex: L,D,TC,AV,DV,D' onChange={(e)=> {setPalavraEntrada(e.target.value); setPalavraModificada(e.target.value); setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('')}}></input>
-                    <div className={styles.buttons}>
+                </div>
+                <div className={styles.buttons}>
                         <button onClick={() => Fp(palavraEntrada)}>Rodar</button>
                         <button onClick={() => maxStep + 1 > doStep && statusOutPut === ''? Fp(palavraModificada,true) : null}>Passo</button>
                         <input type={"file"} accept={".csv"} onChange={(e)=>setCsvFile(e.target.value)}/>
-                    </div>
                 </div>
                 <div className={styles.television}>
                     <Televisao change_channel={channel}/>
