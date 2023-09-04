@@ -13,7 +13,8 @@ export default function ReconhecerLinguagem(){
     const [estadoAtualStep, setEstadoAtualStep] = useState('q0') // Guarda o estado atual do modo Passo-a-Passo (inicia em q0)
     const [statusOutPut, setStatusOutPut] = useState('') // guardara ACEITA, REJEITA ou FUNCAO INDEFINIDA
     
-    const [csvFile, setCsvFile] = useState()
+    const [csvFile, setCsvFile] = useState(null); // guarda o arquivo csv
+    const [valueInput, setValueInput] = useState(null) // default value do main input
     const [volume, setVolume] = useState(0)  // controla o volume da televisão
     const [channel, changeChannel] = useState(0) // canal 0 significa que a televisao esta desligada
     // satura o volume em 5 e 0
@@ -24,6 +25,7 @@ export default function ReconhecerLinguagem(){
             setVolume(0)
     }, [volume])
     
+ 
     // variavel conteundo o estilo do status
     // muda conforme a palavra for aceita ou nao
     var styleOutPutStatus
@@ -70,19 +72,50 @@ export default function ReconhecerLinguagem(){
             setMaxStep(aux?.length - 1)
         }
     }, [palavraModificada])
+
+
+
+
+    // Função pra enviar o csv
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          setCsvFile(file);
+        }
+      };
+    
+   // Função para processar o arquivo CSV após o envio
+    const handleUpload = () => {
+    if (csvFile) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const csvData = event.target.result; // Aqui você tem o conteúdo do arquivo CSV como uma string
+        setValueInput(csvData)
+        setPalavraEntrada(csvData)
+        setPalavraModificada(csvData)
+        setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('') // resets
+      };
+
+      reader.readAsText(csvFile); // Lê o arquivo como texto
+    }
+}
     return(
        
         <div className={styles.mainContainer}>
             <h1>Reconhecer Linguagem</h1>
             <div className={styles.userInterface}>
                 <div className={styles.box}>
-                    <span>Escreva a palavra de Entrada</span>                                 {/*Parte responsável por resetar informações*/ }
-                    <input placeholder='Ex: L,D,TC,AV,DV,D' onChange={(e)=> {setPalavraEntrada(e.target.value); setPalavraModificada(e.target.value); setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('')}}></input>
+                    <span>Escreva a palavra de Entrada</span>                          {/*Parte responsável por resetar informações*/ }
+                    <div className={styles.importFile}>
+                    <input placeholder='Ex: L,D,TC,AV,DV,D' defaultValue={valueInput} onChange={(e)=> {setPalavraEntrada(e.target.value); setPalavraModificada(e.target.value); setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('')}}></input>
+                    {csvFile !== null ? <button onClick={handleUpload}>Importar</button> : <></>}
+                    </div>
                 </div>
                 <div className={styles.buttons}>
                         <button onClick={() => Fp(palavraEntrada)}>Rodar</button>
                         <button onClick={() => maxStep + 1 > doStep && statusOutPut === ''? Fp(palavraModificada,true) : null}>Passo</button>
-                        <input type={"file"} accept={".csv"} onChange={(e)=>setCsvFile(e.target.value)}/>
+                        <input className={styles.csvButton} type={"file"} accept={".csv"} onChange={handleFileChange}/>
                 </div>
                 <div className={styles.television}>
                     <Televisao change_channel={channel}/>

@@ -45,6 +45,22 @@
     font-size: 1.3rem;
 }
 
+.importFile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    /* background-color: black; */
+}
+
+.importFile input{
+    width: 75%;
+}
+.importFile button{
+    padding: 2%;
+    width: 15%;
+}
 .buttons{
     display: flex;
     align-items: center;
