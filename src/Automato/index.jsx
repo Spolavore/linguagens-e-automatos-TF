@@ -347,8 +347,6 @@ export default function App() {
             layout={layout}
             style={{ width: width, height: height }}
             zoomingEnabled={true}
-            maxZoom={5}
-            minZoom={0.4}
             autounselectify={false}
             boxSelectionEnabled={false}
             stylesheet={styleSheet}

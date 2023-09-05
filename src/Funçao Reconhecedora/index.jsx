@@ -15,8 +15,10 @@ export default function ReconhecerLinguagem(){
     
     const [csvFile, setCsvFile] = useState(null); // guarda o arquivo csv
     const [valueInput, setValueInput] = useState(null) // default value do main input
+    const [buttonVisibility, setButtonVisibility] = useState(true)
     const [volume, setVolume] = useState(0)  // controla o volume da televisão
     const [channel, changeChannel] = useState(0) // canal 0 significa que a televisao esta desligada
+
     // satura o volume em 5 e 0
     useEffect(() => {
         if (volume > 5)
@@ -81,6 +83,7 @@ export default function ReconhecerLinguagem(){
         const file = e.target.files[0];
         if (file) {
           setCsvFile(file);
+          setButtonVisibility(true)
         }
       };
     
@@ -95,6 +98,8 @@ export default function ReconhecerLinguagem(){
         setPalavraEntrada(csvData)
         setPalavraModificada(csvData)
         setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('') // resets
+        setButtonVisibility(false)
+        console.log(buttonVisibility)
       };
 
       reader.readAsText(csvFile); // Lê o arquivo como texto
@@ -109,7 +114,7 @@ export default function ReconhecerLinguagem(){
                     <span>Escreva a palavra de Entrada</span>                          {/*Parte responsável por resetar informações*/ }
                     <div className={styles.importFile}>
                     <input placeholder='Ex: L,D,TC,AV,DV,D' defaultValue={valueInput} onChange={(e)=> {setPalavraEntrada(e.target.value); setPalavraModificada(e.target.value); setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('')}}></input>
-                    {csvFile !== null ? <button onClick={handleUpload}>Importar</button> : <></>}
+                    {csvFile !== null && buttonVisibility === true ? <button onClick={handleUpload}>Importar</button> : <></>}
                     </div>
                 </div>
                 <div className={styles.buttons}>

@@ -1,4 +1,10 @@
 import styles from './styles.module.css'
+// Componente responsavel por mostrar palavra por palavra 
+// colocando uma cor verde na palavra que esta de acordo com o
+// alfabeto de entrada e vermelho caso contrario
+
+// Recebe como parametro da funcao se o status da palavra
+// eh aceita, rejeita ou indefinido
 const PalavraNodo = (props) => {
     
     const style_rejeita = {
