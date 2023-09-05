@@ -3,7 +3,7 @@ const Definicoes = () =>{
 
     return(
     <div className={styles.mainContainer}>
-        <h1>Definições do Trabalho:</h1>
+        <h1 style={{fontSize: 'clamp(1.75rem, 3vw, 6vw)'}}>Definições do Trabalho:</h1>
         <div className={styles.definicoes}>
         
          <div className={styles.simbologiaBox}>

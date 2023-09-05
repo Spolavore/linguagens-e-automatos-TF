@@ -6,8 +6,13 @@
 }
 
 .mainContainer h1{
-    font-size: 2vw;
+    font-size: clamp(2vw, 3vw, 6vw);
     margin-bottom: 4%;
+}
+
+h1{
+    font-size: clamp(2vw, 3vw, 6vw);
+
 }
 
 .definicoes{
@@ -36,20 +41,21 @@
 .alfabetoEntrada{
     color: red;
     font-weight: bold;
-    font-size: 1.4vw;
+    font-size: clamp(0.75rem, 1.4vw, 5vw);
     margin-right: 3%;
 }
 
 .estados{
     color: red;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: clamp(0.75rem, 1.4vw, 5vw);
     margin-right: 3%;
 }
 
 .textDefault{
     
-    font-size: 1.3rem;
+    font-size: clamp(0.75rem, 1.2vw, 4vw);
+
 }
 .linguagemUtilizadaBox p {
    font-size: clamp(0.75rem, 1.3vw, 3vw)
@@ -79,4 +85,43 @@
 .transicoesBox p{
     font-size: clamp(0.75rem, 1.5vw, 3vw)
 
+}
+
+@media (max-width: 600px){
+    .definicoes{
+        font-size: 3vw;
+        flex-direction: column;
+    }
+    .alfabetoEntrada{
+        font-size: 4vw;
+    }
+    
+    .simbologiaBox, .definicaoFormalBox, .estadosBox{
+        width: 100%;
+        font-size: 4vw;
+        text-align: center;
+       
+    }
+    .linguagemUtilizadaBox{
+        width: 100%;
+        height: fit-content
+    }
+    .linguagemUtilizadaBox p{
+        font-size: 3.5vw;
+    }
+    .estados{
+        font-size: 4vw;
+    }
+
+    .transicoesBox{
+        padding: 2% 2%;
+    }
+
+    .textDefault{
+        font-size: 4vw;
+    }
+
+    .transicoesBox p{
+        font-size: 3.5vw;
+    }
 }

@@ -334,7 +334,7 @@ export default function App() {
   return (
     <>
       <div className={styles.main}>
-        <h1>Autômato</h1>
+        <h1 style={{fontSize: 'clamp(1.75rem, 3vw, 6vw)'}}>Autômato</h1>
         <div
           style={{
             border: "1px solid",
@@ -347,6 +347,8 @@ export default function App() {
             layout={layout}
             style={{ width: width, height: height }}
             zoomingEnabled={true}
+            maxZoom={5}
+            minZoom={0.1}
             autounselectify={false}
             boxSelectionEnabled={false}
             stylesheet={styleSheet}

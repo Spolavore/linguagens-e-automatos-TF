@@ -32,7 +32,9 @@
 }
 
 .box span{
-    font-size: 3rem;
+ 
+    font-size: clamp(1.2rem,3vw,6rem);
+    
 }
 
 .box input{
@@ -76,10 +78,11 @@
     background-color: #0091FD;
     color: #FFFFFF;
     border: 2px solid #0091FD;
-    width: 100px;
+ 
+    width: clamp(6rem,7vw,10rem);
     height: 50px;
     border-radius: 2px;
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 1vw, 2vw);
     transition: 300ms all ease-out;
 }
 
@@ -108,7 +111,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 10%;
+    gap: 100px;
     margin-top: 5%;
     
 }
@@ -119,4 +122,25 @@
 
 .status h3 span{
     color: #0091FD;
+}
+
+.importButton{
+    width: 200px;
+}
+@media (max-width: 600px){
+    .buttons{
+        width: 200px;
+    }
+    .csvButton{
+        display: none;
+    }
+    .box input{
+        width: 100vw;
+    }
+
+    .status{
+        flex-direction: column;
+        font-size: 1rem;
+        gap: 20px;
+    }
 }
