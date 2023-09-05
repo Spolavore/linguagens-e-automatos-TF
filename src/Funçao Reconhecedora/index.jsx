@@ -111,7 +111,7 @@ export default function ReconhecerLinguagem(){
                 <div className={styles.box}>
                     <span>Escreva a palavra de Entrada</span>                          {/*Parte responsável por resetar informações*/ }
                     <div className={styles.importFile}>
-                    <input placeholder='Ex: L,D,TC,AV,DV,D' defaultValue={valueInput}  onChange={(e)=> {setPalavraEntrada(e.target.value); setPalavraModificada(e.target.value); setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('')}}></input>
+                    <input placeholder='Ex: L,D,TC,AV,DV,D'  onChange={(e)=> {setPalavraEntrada(e.target.value); setPalavraModificada(e.target.value); setStep(0); setStatus([]); setSequence([]); setEstadoAtualStep('q0'); setStatusOutPut('')}} value={palavraEntrada}></input>
                     {csvFile !== null ? <button className={styles.importButton} onClick={handleUpload}>Importar</button> : <></>}
                     </div>
                 </div>
